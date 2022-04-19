@@ -4,3 +4,7 @@ $(function() {
     showAnim: "slideDown"
   });
 });
+
+$(document).ready(function () {
+  $('#lightgallery').lightGallery();
+});

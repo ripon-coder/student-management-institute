@@ -101,4 +101,19 @@ class HomeController extends Controller
     public function error(){
         return view('home.error');
     }
+    public function stFeedback(){
+        return view('home.student_feed_back.feedback');
+    }
+    public function review(){
+        return view('home.review.review');
+    }
+    public function ourteam(){
+        return view('home.ourteam.ourteam');
+    }
+    public function blogs(){
+        return view('home.blogs.blogs');
+    }
+    public function courses(){
+        return view('home.courses.courses');
+    }
 }

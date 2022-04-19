@@ -61,6 +61,13 @@ Route::get('/scholarship-form', [HomeController::class, 'scholarshipForm'])->nam
 Route::post('/scholarship-form', [HomeController::class, 'formstore'])->name('scholarshipFormstore');
 Route::get('/congratulations', [HomeController::class, 'congratulations'])->name('congratulations');
 Route::get('/error', [HomeController::class, 'error'])->name('error');
+Route::get('/student-feedback', [HomeController::class, 'stFeedback'])->name('stFeedback');
+Route::get('/review', [HomeController::class, 'review'])->name('review');
+Route::get('/our-team', [HomeController::class, 'ourteam'])->name('ourteam');
+Route::get('/blogs', [HomeController::class, 'blogs'])->name('blogs');
+Route::get('/courses', [HomeController::class, 'courses'])->name('courses');
+
+
 
 
 Route::group(['middleware'=>'auth','prefix' => 'dashboard'],function(){

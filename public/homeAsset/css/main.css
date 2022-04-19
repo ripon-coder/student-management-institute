@@ -1,4 +1,16 @@
 .riponcolor{background:#82ab82}
+.ic_hov {
+    position: absolute;
+    /* top: 24%; */
+    left: 42%;
+    color: #ffffff;
+    /* position: relative; */
+    top: calc(65% - 63px);
+}
+
+.teamcolor {
+    background-color: #F7F7F7;
+}
 .text-danger{
     color: red;
 }

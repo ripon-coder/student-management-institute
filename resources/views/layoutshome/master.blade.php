@@ -5,20 +5,28 @@
     <title>Online & Offline IT Training Institute in Dhaka | Candle IT Institute</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/x-icon" href="{{asset('favicon.ico')}}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('homeAsset/css/main.css') }}" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.0/css/lightgallery.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1556817331/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"
+        type='text/css'>
+
 
 
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light" id="ftco-navbar">
-        <div class="container">
+        <div class="container-fluid">
             <a class="navbar-brand" href="/"><img src="{{ asset('homeAsset/img/logo.png') }}" width="280" /></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,13 +35,16 @@
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Courses</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Teacher</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Student Review</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
+
+                    <li class="nav-item"><a href="{{route('courses')}}" class="nav-link">Courses</a></li>
+                    <li class="nav-item"><a href="{{ route('ourteam') }}" class="nav-link">Our Team</a></li>
+                    <li class="nav-item"><a href="{{ route('review') }}" class="nav-link">Review</a></li>
+                    <li class="nav-item"><a href="{{ route('stFeedback') }}" class="nav-link">Student
+                            Feedback</a></li>
+                    <li class="nav-item"><a href="{{ route('blogs') }}" class="nav-link">Blogs</a></li>
 
                     <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">About Us</a></li>
                     <li class="nav-item cta"><a href="{{ route('scholarshipForm') }}"
                             class="nav-link"><span>Apply Now!</span></a></li>
                 </ul>
@@ -166,7 +177,7 @@
     <script src="{{ asset('homeAsset/js/main.js') }}"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
-    integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+        integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
     <script src="{{ asset('homeAsset/js/ripon.js') }}"></script>
 
 
