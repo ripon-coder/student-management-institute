@@ -29,8 +29,11 @@
     <link id="theme-style" rel="stylesheet" href="{{ asset('css/vuetify.css') }}">
     <link id="theme-style" rel="stylesheet" href="{{ asset('assets/css/portal.css') }}">
     <link id="theme-style" rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+    <link  rel="stylesheet" href="{{ asset('assets/css/summernote-bs4.min.css') }}">
     <script defer src="{{ asset('assets/js/popper.min.js') }}"></script>
     <script defer src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    <script defer src="{{ asset('assets/js/summernote-bs4.min.js') }}"></script>
+    <script defer src="{{ asset('assets/js/scripts.js') }}"></script>
     <script defer src="{{ asset('assets/js/app.js') }}"></script>
 
 </head>

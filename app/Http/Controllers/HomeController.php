@@ -5,6 +5,8 @@ use App\Models\User;
 use App\Models\courseModel;
 use App\Models\studentModel;
 use App\Models\batchModel;
+use App\Models\studentFeedback;
+use App\Models\blogs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
@@ -102,7 +104,8 @@ class HomeController extends Controller
         return view('home.error');
     }
     public function stFeedback(){
-        return view('home.student_feed_back.feedback');
+        $feedback =studentFeedback::orderBy('id','DESC')->paginate(30);
+        return view('home.student_feed_back.feedback',compact('feedback'));
     }
     public function review(){
         return view('home.review.review');
@@ -111,7 +114,8 @@ class HomeController extends Controller
         return view('home.ourteam.ourteam');
     }
     public function blogs(){
-        return view('home.blogs.blogs');
+        $blogs = blogs::orderBy('id','DESC')->paginate(30);
+        return view('home.blogs.blogs',compact('blogs'));
     }
     public function courses(){
         return view('home.courses.courses');

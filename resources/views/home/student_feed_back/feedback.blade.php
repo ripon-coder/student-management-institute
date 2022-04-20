@@ -6,20 +6,22 @@
                 <h2 class="mb-4 myfont fs48">Student Feedback</h2>
             </div>
         </div>
-        <div id="lightgallery" class="lightGallery">
-            <a href="{{ asset('img/sakil.jpg') }}" class="image-tile" data-abc="true">
-                <img src="{{ asset('img/sakil.jpg') }}" height="241px" alt="image small">
-            </a>
-            <a href="{{ asset('img/sakil.jpg') }}" class="image-tile" data-abc="true">
-                <img src="{{ asset('img/sakil.jpg') }}" height="241px" alt="image small">
-            </a>
-            <a href="{{ asset('img/men.png') }}" class="image-tile" data-abc="true">
-                <img src="{{ asset('img/men.png') }}" height="241px" alt="image small">
-            </a>
-            <a href="{{ asset('img/men.png') }}" class="image-tile" data-abc="true">
-                <img src="{{ asset('img/men.png') }}" height="241px" alt="image small">
-            </a>
-        </div>
+        @if (!$feedback->isEmpty())
+            <div id="lightgallery" class="lightGallery">
+                @foreach ($feedback as $item)
+                    <a href="{{ url(Storage::url('feedback/' . $item->image)) }}" class="image-tile" data-abc="true">
+                        <img src="{{ url(Storage::url('feedback/' . $item->image)) }}" height="241px" alt="{{$item->title}}">
+                    </a>
+                @endforeach
+            </div>
+            <div class="d-flex justify-content-center">
+                {!!$feedback->links("pagination::bootstrap-4")!!}
+            </div>
+        @else
+            <div class="alert alert-danger" role="alert">
+                Student feedback no found!
+            </div>
+        @endif
 
     </div>
 @endsection

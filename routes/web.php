@@ -16,6 +16,9 @@ use App\Http\Controllers\paymentActivitiesController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\overviewController;
+use App\Http\Controllers\StudentFeedbackController;
+use App\Http\Controllers\BlogsController;
+use App\Http\Controllers\VideoReviewController;
 
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
@@ -178,9 +181,16 @@ Route::group(['middleware'=>'auth','prefix' => 'dashboard'],function(){
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
     Route::post('/settings-update', [SettingsController::class, 'updatesettings'])->name('settings.update');
 
-
-
+    Route::resource('feedback', StudentFeedbackController::class);
+    Route::resource('blogs-admin', BlogsController::class);
+    Route::resource('video-review', VideoReviewController::class);
 
     
+    
+
+});
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 

@@ -17,8 +17,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1556817331/lightgallery-all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"
-        type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" integrity="sha512-i8+QythOYyQke6XbStjt9T4yQHhhM+9Y9yTY1fOxoDQwsQpKMEpIoSQZ8mVomtnVCf9PBvoQDnKl06gGOOD19Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
 
@@ -52,8 +51,7 @@
         </div>
     </nav>
     @yield('content')
-    <footer class="ftco-footer ftco-bg-dark ftco-section img"
-        style="background-image: url(homeAsset/img/images/bg_1.jpg); background-attachment:fixed;">
+    <footer class="ftco-footer ftco-bg-dark ftco-section img">
         <div class="overlay"></div>
         <div class="container">
             <div class="row mb-3">
