@@ -1,11 +1,9 @@
 @extends('layoutshome.master', ['title' => $blog->title])
 @section('content')
+<div class="text-center titlecandle">
+    <h3>{{$blog->title}}</h3>
+</div>
     <div class="container">
-        <div class="row justify-content-center mb-2">
-            <div class="mt-2">
-                <h3 class="">{{$blog->title}}</h3>
-            </div>
-        </div>
         <div class="row d-flex">
 
             <div class="col-md-12 d-flex ftco-animate fadeInUp ftco-animated">

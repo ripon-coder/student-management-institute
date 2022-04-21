@@ -71,7 +71,7 @@ Route::get('/our-team', [HomeController::class, 'ourteam'])->name('ourteam');
 Route::get('/blogs', [HomeController::class, 'blogs'])->name('blogs');
 Route::get('/courses', [HomeController::class, 'courses'])->name('courses');
 Route::get('/blog/{slug}', [HomeController::class, 'blogsinglePage'])->name('blog.single');
-
+Route::post('/email-submit', [HomeController::class, 'emailsubmit']);
 
 
 

@@ -19,7 +19,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1556817331/lightgallery-all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" integrity="sha512-i8+QythOYyQke6XbStjt9T4yQHhhM+9Y9yTY1fOxoDQwsQpKMEpIoSQZ8mVomtnVCf9PBvoQDnKl06gGOOD19Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 
 
 
@@ -37,8 +37,9 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
 
-                    <li class="nav-item"><a href="{{route('courses')}}" class="nav-link">Courses</a></li>
-                    <li class="nav-item"><a href="{{ route('ourteam') }}" class="nav-link">Our Team</a></li>
+                    <li class="nav-item"><a href="{{ route('courses') }}" class="nav-link">Courses</a></li>
+                    <li class="nav-item"><a href="{{ route('ourteam') }}" class="nav-link">Our Team</a>
+                    </li>
                     <li class="nav-item"><a href="{{ route('review') }}" class="nav-link">Review</a></li>
                     <li class="nav-item"><a href="{{ route('stFeedback') }}" class="nav-link">Student
                             Feedback</a></li>

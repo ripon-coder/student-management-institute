@@ -1,11 +1,9 @@
 @extends('layoutshome.master', ['title' => 'Our Team'])
 @section('content')
+<div class="text-center titlecandle">
+    <h3>Our Team</h3>
+</div>
     <div class="container-fluid">
-        <div class="row justify-content-center mb-2">
-            <div class="col-md-7 heading-section ftco-animate text-center fadeInUp ftco-animated">
-                <h2 class="mb-4 myfont fs48">Our Team</h2>
-            </div>
-        </div>
         <div class="">
             <div class="row row-cols-2 row-cols-md-4 row-cols-lg-5 pb-3">
                 @foreach ($ourteams as $item)

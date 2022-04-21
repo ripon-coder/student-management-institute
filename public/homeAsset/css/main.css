@@ -1,3 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
+.titlecandle {
+    background: linear-gradient(to right, #93F9B9, #1D976C);
+}
+
+.titlecandle>h3 {
+    color: white;
+    font-family: 'Acme', sans-serif !important;
+    font-size: 25px;
+    padding: 20px;
+}
+
+.imgborder {
+    border: 3px solid red;
+}
 .riponcolor{background:#82ab82}
 .ic_hov {
     position: absolute;
@@ -2621,6 +2637,9 @@ img.mfp-img{
     padding-right:36px
 }
 @media all and (max-width:900px){
+    .titlecandle>h3 {
+        font-size: 20px;
+    }
     .mfp-arrow{
         -webkit-transform:scale(.75);
         transform:scale(.75)
@@ -3600,6 +3619,7 @@ a>code{
     margin-left:auto
 }
 @media (min-width:576px){
+
     .container{
         max-width:540px
     }
@@ -4991,7 +5011,7 @@ h1,h2,h3,h4,.h1,.h2,.h3,.h4{
 .ftco-navbar-light .navbar-nav>.nav-item.cta>a{
     color:#fff;
     border:1px solid #8DC740;
-    background:#8DC740;
+    background: linear-gradient(to right, #10853b, #5fcda6);
     padding-top:.5rem;
     padding-bottom:.5rem;
     padding-left:20px;

@@ -1,11 +1,9 @@
 @extends('layoutshome.master', ['title' => 'Student Review'])
 @section('content')
+<div class="text-center titlecandle">
+    <h3>Courses</h3>
+</div>
     <div class="container">
-        <div class="row justify-content-center mb-2">
-            <div class="col-md-7 heading-section ftco-animate text-center fadeInUp ftco-animated">
-                <h2 class="mb-4 myfont fs48">Courses </h2>
-            </div>
-        </div>
         <div class="row">
             <div class="col-md-4 d-flex ftco-animate fadeInUp ftco-animated">
                 <div class="course align-self-stretch">

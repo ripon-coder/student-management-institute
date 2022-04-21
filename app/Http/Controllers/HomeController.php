@@ -14,15 +14,16 @@ use Carbon\Carbon;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Illuminate\Support\Str;
-
+use Newsletter;
 
 class HomeController extends Controller
 {
     public function index()
     {
+        $blogs = blogs::orderBy('id','DESC')->limit(3)->get();
         SEOMeta::setTitle('Online & Offline IT Training Institute in Dhaka');
         OpenGraph::setTitle('Online & Offline IT Training Institute in Dhaka');
-        return view('home.home');
+        return view('home.home',compact('blogs'));
     }
 
     public function scholarshipForm(){
@@ -151,6 +152,12 @@ class HomeController extends Controller
         SEOMeta::setTitle('Course');
         OpenGraph::setTitle('course');
         return view('home.courses.courses');
+    }
+
+    public function emailsubmit(Request $request){
+       // Newsletter::subscribe($request->email);
+       Newsletter::subscribe($request->email);
+
     }
 
 }
