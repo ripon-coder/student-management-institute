@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Add New Feedback'])
+@extends('layouts.app', ['title' => 'Add New Blog'])
 @section('content')
     <div class="app-card app-card-settings shadow-sm p-4">
         <h1 class="app-page-title text-center">Create Blog</h1>
@@ -21,6 +21,7 @@
                 <div class="mb-3">
                     <label for="image" class="form-label">Image*</label>
                     <input type="file" value="{{old('image')}}" name="image" class="form-control" id="image" required="">
+                    <div  class="form-text">Image size should be height: 300px</div>
                 </div>
                 <div class="mb-3">
                     <label for="image" class="form-label">Description*</label>

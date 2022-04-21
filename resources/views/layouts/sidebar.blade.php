@@ -248,7 +248,7 @@
                                         href="{{ route('blogs-admin.index') }}">Blogs</a></li>
                                 <li class="submenu-item"><a
                                         class="submenu-link"
-                                        href="#">Our Team</a></li>
+                                        href="{{route('admin-team.index')}}">Our Team</a></li>
                             </ul>
                         </div>
                     </li>

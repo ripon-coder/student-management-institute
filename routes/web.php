@@ -18,6 +18,7 @@ use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\overviewController;
 use App\Http\Controllers\StudentFeedbackController;
 use App\Http\Controllers\BlogsController;
+use App\Http\Controllers\OurteamController;
 use App\Http\Controllers\VideoReviewController;
 
 use Illuminate\Support\Facades\Artisan;
@@ -69,6 +70,7 @@ Route::get('/review', [HomeController::class, 'review'])->name('review');
 Route::get('/our-team', [HomeController::class, 'ourteam'])->name('ourteam');
 Route::get('/blogs', [HomeController::class, 'blogs'])->name('blogs');
 Route::get('/courses', [HomeController::class, 'courses'])->name('courses');
+Route::get('/blog/{slug}', [HomeController::class, 'blogsinglePage'])->name('blog.single');
 
 
 
@@ -184,6 +186,7 @@ Route::group(['middleware'=>'auth','prefix' => 'dashboard'],function(){
     Route::resource('feedback', StudentFeedbackController::class);
     Route::resource('blogs-admin', BlogsController::class);
     Route::resource('video-review', VideoReviewController::class);
+    Route::resource('admin-team', OurteamController::class);
 
     
     

@@ -10,7 +10,7 @@
             <div id="lightgallery" class="lightGallery">
                 @foreach ($feedback as $item)
                     <a href="{{ url(Storage::url('feedback/' . $item->image)) }}" class="image-tile" data-abc="true">
-                        <img src="{{ url(Storage::url('feedback/' . $item->image)) }}" height="241px" alt="{{$item->title}}">
+                        <img loading="lazy" src="{{ url(Storage::url('feedback/' . $item->image)) }}" height="241px" alt="{{$item->title}}">
                     </a>
                 @endforeach
             </div>

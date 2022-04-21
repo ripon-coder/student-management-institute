@@ -7,14 +7,21 @@ use App\Models\studentModel;
 use App\Models\batchModel;
 use App\Models\studentFeedback;
 use App\Models\blogs;
+use App\Models\ourteam;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\OpenGraph;
+use Illuminate\Support\Str;
+
 
 class HomeController extends Controller
 {
     public function index()
     {
+        SEOMeta::setTitle('Online & Offline IT Training Institute in Dhaka');
+        OpenGraph::setTitle('Online & Offline IT Training Institute in Dhaka');
         return view('home.home');
     }
 
@@ -104,20 +111,46 @@ class HomeController extends Controller
         return view('home.error');
     }
     public function stFeedback(){
+        SEOMeta::setTitle('Student Feedback');
+        OpenGraph::setTitle('course');
         $feedback =studentFeedback::orderBy('id','DESC')->paginate(30);
         return view('home.student_feed_back.feedback',compact('feedback'));
     }
     public function review(){
+        SEOMeta::setTitle('Review');
+        OpenGraph::setTitle('Revoew');
         return view('home.review.review');
     }
     public function ourteam(){
-        return view('home.ourteam.ourteam');
+        SEOMeta::setTitle('Our Team');
+        OpenGraph::setTitle('Our Team');
+        $ourteams = ourteam::orderBy('id','ASC')->paginate(30);
+        return view('home.ourteam.ourteam',compact('ourteams'));
     }
     public function blogs(){
+        SEOMeta::setTitle('Blogs');
+        OpenGraph::setTitle('Blogs');
         $blogs = blogs::orderBy('id','DESC')->paginate(30);
         return view('home.blogs.blogs',compact('blogs'));
     }
+    public function blogsinglePage($slug){
+        if(blogs::where('slug',$slug)->exists()){
+            $blog = blogs::where('slug',$slug)->first();
+            SEOMeta::setTitle($blog->title);
+            SEOMeta::setDescription(Str::limit(strip_tags($blog->description), 100));
+            OpenGraph::setDescription(Str::limit(strip_tags($blog->description), 100));
+            OpenGraph::setTitle($blog->title);
+            OpenGraph::addImage(url('/storage/blogs/'.$blog->image), ['height' => 550, 'width' => 650]);
+            return view('home.blogs.single',compact('blog'));
+        }else{
+            return abort(404);
+        }
+        
+    }
     public function courses(){
+        SEOMeta::setTitle('Course');
+        OpenGraph::setTitle('course');
         return view('home.courses.courses');
     }
+
 }

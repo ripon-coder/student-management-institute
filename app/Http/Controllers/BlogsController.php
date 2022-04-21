@@ -50,9 +50,7 @@ class BlogsController extends Controller
             $file = $request->image;
             $thumb = substr(uniqid(rand(), true), 8, 8) . '.' . $file->getClientOriginalExtension();
             $image = Image::make($file);
-            $image->resize(null, 627, function ($constraint) {
-                $constraint->aspectRatio();
-            });
+            $image->crop(700, 300);
             $image->save(storage_path('/app/public/blogs/'.$thumb));
             
             $blog->image = $thumb;
@@ -110,17 +108,15 @@ class BlogsController extends Controller
                 File::delete($exitfile);
                 $thumb = substr(uniqid(rand(), true), 8, 8) . '.' . $file->getClientOriginalExtension();
                 $image = Image::make($file);
-                $image->resize(null, 627, function ($constraint) {
-                    $constraint->aspectRatio();
-                });
+
+
+                $image->crop(700, 300);
                 $image->save(storage_path('/app/public/blogs/'.$thumb));
 
             }else{
                 $thumb = substr(uniqid(rand(), true), 8, 8) . '.' . $file->getClientOriginalExtension();
                 $image = Image::make($file);
-                $image->resize(null, 627, function ($constraint) {
-                    $constraint->aspectRatio();
-                });
+                $image->crop(700, 300);
                 $image->save(storage_path('/app/public/blogs/'.$thumb));
 
             }

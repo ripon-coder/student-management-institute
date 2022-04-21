@@ -2,9 +2,11 @@
 <html lang="en">
 
 <head>
-    <title>Online & Offline IT Training Institute in Dhaka | Candle IT Institute</title>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {!! SEO::generate() !!}
+    {!! OpenGraph::generate() !!}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('homeAsset/css/main.css') }}" />
