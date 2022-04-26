@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 d-flex ftco-animate fadeInUp ftco-animated">
-                <div class="course align-self-stretch">
+                <div class="course">
                     <a href="#" class="img"
                         style="background-image:url(homeAsset/img/xcourse-1.jpg.pagespeed.ic.Lt4DOM616x.jpg)"></a>
                     <div class="text p-4">

@@ -20,6 +20,7 @@ use App\Http\Controllers\StudentFeedbackController;
 use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\OurteamController;
 use App\Http\Controllers\VideoReviewController;
+use App\Http\Controllers\ContactUsController;
 
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
@@ -72,7 +73,9 @@ Route::get('/blogs', [HomeController::class, 'blogs'])->name('blogs');
 Route::get('/courses', [HomeController::class, 'courses'])->name('courses');
 Route::get('/blog/{slug}', [HomeController::class, 'blogsinglePage'])->name('blog.single');
 Route::post('/email-submit', [HomeController::class, 'emailsubmit']);
-
+Route::get('/contact-us', [HomeController::class, 'contactus'])->name('contactus');
+Route::post('/contact-submit', [HomeController::class, 'contactSubmit'])->name('contactSubmit');
+Route::get('/about-us', [HomeController::class, 'aboutus'])->name('aboutus');
 
 
 Route::group(['middleware'=>'auth','prefix' => 'dashboard'],function(){
@@ -81,10 +84,10 @@ Route::group(['middleware'=>'auth','prefix' => 'dashboard'],function(){
     
      Route::post('login-by-admin/{id}', [userController::class, 'loginbyadmin'])->name('loginbyadmin')->middleware(['role:Admin']);
     
-    Route::resource('target', TargetedCollectionMonthwiseController::class);
-    Route::resource('expense', ExpenseController::class);
-    Route::get('/expense-date-search', [ExpenseController::class, 'datewiseSearch'])->name('datewiseSearch');
-    Route::get('/expense-month-search', [ExpenseController::class, 'monthwiseSearch'])->name('monthwiseSearch');
+    Route::resource('target', TargetedCollectionMonthwiseController::class)->middleware(['role:Admin']);;
+    Route::resource('expense', ExpenseController::class)->middleware(['role:Admin']);;
+    Route::get('/expense-date-search', [ExpenseController::class, 'datewiseSearch'])->name('datewiseSearch')->middleware(['role:Admin']);;
+    Route::get('/expense-month-search', [ExpenseController::class, 'monthwiseSearch'])->name('monthwiseSearch')->middleware(['role:Admin']);;
     Route::get('/overview', [overviewController::class, 'overview'])->name('overview');
     Route::get('/month-wise-statement', [overviewController::class, 'monthstatement'])->name('monthstatement');
 
@@ -97,8 +100,10 @@ Route::group(['middleware'=>'auth','prefix' => 'dashboard'],function(){
 
 
     Route::resource('users', userController::class)->middleware(['role:Admin']);
-    Route::resource('course', courseController::class)->middleware(['role:Admin']);;
-    Route::resource('batch', batchController::class)->middleware(['role:Admin']);;
+    Route::resource('course', courseController::class)->middleware(['role:Admin']);
+    Route::resource('batch', batchController::class)->middleware(['role:Admin']);
+
+
 
     // Batch Section
     
@@ -164,8 +169,8 @@ Route::group(['middleware'=>'auth','prefix' => 'dashboard'],function(){
     Route::get('/today-student-by-cro-unpaid', [studentManageController::class, 'today_student_by_cro_unpaid']);
 
 
-    Route::get('/staff-report', [StaffsReport::class, 'index'])->name('satffreport');
-    Route::get('/staff-report-details/{id}', [StaffsReport::class, 'staffReportDetails'])->name('staffRepostDetails');
+    Route::get('/staff-report', [StaffsReport::class, 'index'])->name('satffreport')->middleware(['role:Admin']);;
+    Route::get('/staff-report-details/{id}', [StaffsReport::class, 'staffReportDetails'])->name('staffRepostDetails')->middleware(['role:Admin']);;
     
     // Backup
     Route::get('/backup', [BackupController::class, 'index'])->name('backup');
@@ -177,6 +182,7 @@ Route::group(['middleware'=>'auth','prefix' => 'dashboard'],function(){
     Route::get('/payment-activities', [paymentActivitiesController::class, 'index'])->name('payment.index')->middleware(['role:Admin']);
     Route::get('/payment-activities-date-wise-search', [paymentActivitiesController::class, 'dateSearch'])->name('payment.date')->middleware(['role:Admin']);
     Route::get('/payment-activities-month-wise-search', [paymentActivitiesController::class, 'monthSearch'])->name('payment.month')->middleware(['role:Admin']);
+    Route::get('/payment-history', [paymentActivitiesController::class, 'paymentHistoryByCro'])->name('payment.history')->middleware(['role:CRO']);
 
     // Settings
     
@@ -187,6 +193,8 @@ Route::group(['middleware'=>'auth','prefix' => 'dashboard'],function(){
     Route::resource('blogs-admin', BlogsController::class);
     Route::resource('video-review', VideoReviewController::class);
     Route::resource('admin-team', OurteamController::class);
+    Route::resource('contact-us', ContactUsController::class);
+
 
     
     

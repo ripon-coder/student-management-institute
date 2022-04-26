@@ -50,7 +50,7 @@ class OurteamController extends Controller
             $file = $request->image;
             $thumb = substr(uniqid(rand(), true), 8, 8) . '.' . $file->getClientOriginalExtension();
             $image = Image::make($file);
-            $image->crop(358, 339);
+            $image->fit(358, 339);
             $image->save(storage_path('/app/public/team/'.$thumb));
             
             $team->image = $thumb;
@@ -108,13 +108,13 @@ class OurteamController extends Controller
                 File::delete($exitfile);
                 $thumb = substr(uniqid(rand(), true), 8, 8) . '.' . $file->getClientOriginalExtension();
                 $image = Image::make($file);
-                $image->crop(358, 339);
+                $image->fit(358, 339);
                 $image->save(storage_path('/app/public/team/'.$thumb));
 
             }else{
                 $thumb = substr(uniqid(rand(), true), 8, 8) . '.' . $file->getClientOriginalExtension();
                 $image = Image::make($file);
-                $image->crop(358, 339);
+                $image->fit(358, 339);
                 $image->save(storage_path('/app/public/team/'.$thumb));
 
             }

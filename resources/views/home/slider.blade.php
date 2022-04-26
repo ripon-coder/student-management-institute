@@ -4,7 +4,7 @@
        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-8 ftco-animate text-center">
              <h1 class="mb-4 myfont">পছন্দের ক্যারিয়ারে যেতে স্কিল ডেভেলপমেন্ট গুরুত্বপূর্ণ একটি ধাপ</h1>
-             <p><a href="{{route('scholarshipForm')}}" class="btn btn-primary px-4 py-3">আবেদন করুন</a> <a href="#" class="btn btn-secondary px-4 py-3">সকল কোর্স গুলো দেখুন</a></p>
+             <p><a href="{{route('scholarshipForm')}}" class="btn btn-primary px-4 py-3">আবেদন করুন</a> <a href="{{route('courses')}}" class="btn btn-secondary px-4 py-3">সকল কোর্স গুলো দেখুন</a></p>
           </div>
        </div>
     </div>

@@ -72,6 +72,7 @@ class dashboardController extends Controller
         $data['monthlyAdmission'] = studentModel::where('payAmount','>=',1)->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->where('reference_id',Auth::id())->count();
         $data['totalAdmission'] = studentModel::where('payAmount','>=',1)->where('reference_id',Auth::id())->count();
         $data['pendingAdmission'] = studentModel::where('payAmount','=',0)->where('reference_id',Auth::id())->count();
+        $data['monthlyCollection'] = paymentModel::where('user_id',Auth::id())->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->sum('amount');
 
 
         $data['reminderCro'] = studentModel::whereDate('reminder_time','=',date('Y-m-d'))->where('reference_id',Auth::id())->get();

@@ -7,11 +7,9 @@
                     src="{{ asset('assets/images/app-logo.png') }}" alt="logo"></a>
 
         </div>
-        <!--//app-branding-->
         <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
             <ul class="app-menu list-unstyled accordion" id="menu-accordion">
                 <li class="nav-item">
-                    <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                     <a class="nav-link {{ request()->is('dashboard') ? 'active' : '' }}"
                         href="{{ route('dashboard') }}">
                         <span class="nav-icon">
@@ -24,12 +22,63 @@
                         </span>
                         <span class="nav-link-text">Overview</span>
                     </a>
-                    <!--//nav-link-->
                 </li>
-
+                {{-- EDITOR SECTION --}}
+                @role('Editor')
+                <li class="nav-item">
+                    <a class="submenu-toggle nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#page"
+                        aria-expanded="false" aria-controls="submenu-1">
+                        <span class="nav-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-journals" viewBox="0 0 16 16">
+                                <path
+                                    d="M5 0h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2 2 2 0 0 1-2 2H3a2 2 0 0 1-2-2h1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1H1a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v9a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1H3a2 2 0 0 1 2-2z" />
+                                <path
+                                    d="M1 6v-.5a.5.5 0 0 1 1 0V6h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V9h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 2.5v.5H.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1H2v-.5a.5.5 0 0 0-1 0z" />
+                            </svg>
+                        </span>
+                        <span class="nav-link-text">Pages</span>
+                        <span class="submenu-arrow">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-down"
+                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                            </svg>
+                        </span>
+                    </a>
+                    <div id="page" class="collapse submenu submenu-1" data-bs-parent="#menu-accordion">
+                        <ul class="submenu-list list-unstyled">
+                            <li class="submenu-item"><a
+                                    class="submenu-link {{ request()->is('dashboard/feedback*') ? 'active' : '' }}"
+                                    href="{{ route('feedback.index') }}">Student-Feedback</a></li>
+                            <li class="submenu-item"><a
+                                    class="submenu-link {{ request()->is('dashboard/video-review*') ? 'active' : '' }}"
+                                    href="{{ route('video-review.index') }}">Video Reviews</a></li>
+                            <li class="submenu-item"><a
+                                    class="submenu-link {{ request()->is('dashboard/blogs-admin*') ? 'active' : '' }}"
+                                    href="{{ route('blogs-admin.index') }}">Blogs</a></li>
+                            <li class="submenu-item"><a class="submenu-link"
+                                    href="{{ route('admin-team.index') }}">Our Team</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->is('dashboard/contact-us*') ? 'active' : '' }}"
+                        href="{{ route('contact-us.index') }}">
+                        <span class="nav-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-signal" viewBox="0 0 16 16">
+                                <path
+                                    d="m6.08.234.179.727a7.264 7.264 0 0 0-2.01.832l-.383-.643A7.9 7.9 0 0 1 6.079.234zm3.84 0L9.742.96a7.265 7.265 0 0 1 2.01.832l.388-.643A7.957 7.957 0 0 0 9.92.234zm-8.77 3.63a7.944 7.944 0 0 0-.916 2.215l.727.18a7.264 7.264 0 0 1 .832-2.01l-.643-.386zM.75 8a7.3 7.3 0 0 1 .081-1.086L.091 6.8a8 8 0 0 0 0 2.398l.74-.112A7.262 7.262 0 0 1 .75 8zm11.384 6.848-.384-.64a7.23 7.23 0 0 1-2.007.831l.18.728a7.965 7.965 0 0 0 2.211-.919zM15.251 8c0 .364-.028.727-.082 1.086l.74.112a7.966 7.966 0 0 0 0-2.398l-.74.114c.054.36.082.722.082 1.086zm.516 1.918-.728-.18a7.252 7.252 0 0 1-.832 2.012l.643.387a7.933 7.933 0 0 0 .917-2.219zm-6.68 5.25c-.72.11-1.453.11-2.173 0l-.112.742a7.99 7.99 0 0 0 2.396 0l-.112-.741zm4.75-2.868a7.229 7.229 0 0 1-1.537 1.534l.446.605a8.07 8.07 0 0 0 1.695-1.689l-.604-.45zM12.3 2.163c.587.432 1.105.95 1.537 1.537l.604-.45a8.06 8.06 0 0 0-1.69-1.691l-.45.604zM2.163 3.7A7.242 7.242 0 0 1 3.7 2.163l-.45-.604a8.06 8.06 0 0 0-1.691 1.69l.604.45zm12.688.163-.644.387c.377.623.658 1.3.832 2.007l.728-.18a7.931 7.931 0 0 0-.916-2.214zM6.913.831a7.254 7.254 0 0 1 2.172 0l.112-.74a7.985 7.985 0 0 0-2.396 0l.112.74zM2.547 14.64 1 15l.36-1.549-.729-.17-.361 1.548a.75.75 0 0 0 .9.902l1.548-.357-.17-.734zM.786 12.612l.732.168.25-1.073A7.187 7.187 0 0 1 .96 9.74l-.727.18a8 8 0 0 0 .736 1.902l-.184.79zm3.5 1.623-1.073.25.17.731.79-.184c.6.327 1.239.574 1.902.737l.18-.728a7.197 7.197 0 0 1-1.962-.811l-.007.005zM8 1.5a6.502 6.502 0 0 0-6.498 6.502 6.516 6.516 0 0 0 .998 3.455l-.625 2.668L4.54 13.5a6.502 6.502 0 0 0 6.93-11A6.516 6.516 0 0 0 8 1.5" />
+                            </svg>
+                        </span>
+                        <span class="nav-link-text">Message</span>
+                    </a>
+                </li>
+                @endrole
+                {{-- CRO SECTION --}}
                 @role('CRO')
                     <li class="nav-item">
-                        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                         <a class="nav-link {{ request()->is('dashboard/student-by-cro') ? 'active' : '' }} "
                             href="{{ route('studentmanage') }}">
                             <span class="nav-icon">
@@ -41,28 +90,37 @@
                             </span>
                             <span class="nav-link-text">Student Management <sup>CRO</sup></span>
                         </a>
-                        <!--//nav-link-->
                     </li>
-                    <!--//nav-item-->
                     <li class="nav-item">
-                        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+                        <a class="nav-link {{ request()->is('dashboard/payment-history') ? 'active' : '' }} "
+                            href="{{ route('payment.history') }}">
+                            <span class="nav-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wallet" viewBox="0 0 16 16">
+                                    <path d="M0 3a2 2 0 0 1 2-2h13.5a.5.5 0 0 1 0 1H15v2a1 1 0 0 1 1 1v8.5a1.5 1.5 0 0 1-1.5 1.5h-12A2.5 2.5 0 0 1 0 12.5V3zm1 1.732V12.5A1.5 1.5 0 0 0 2.5 14h12a.5.5 0 0 0 .5-.5V5H2a1.99 1.99 0 0 1-1-.268zM1 3a1 1 0 0 0 1 1h12V2H2a1 1 0 0 0-1 1z"/>
+                                  </svg>
+                            </span>
+                            <span class="nav-link-text">Payment History</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link {{ request()->is('dashboard/blogs-admin*') ? 'active' : '' }} "
                             href="{{ route('blogs-admin.index') }}">
                             <span class="nav-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-heading" viewBox="0 0 16 16">
-                                    <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
-                                    <path d="M3 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-1z"/>
-                                  </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-card-heading" viewBox="0 0 16 16">
+                                    <path
+                                        d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+                                    <path
+                                        d="M3 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-1z" />
+                                </svg>
                             </span>
                             <span class="nav-link-text">Blogs</sup></span>
                         </a>
-                        <!--//nav-link-->
                     </li>
-                    <!--//nav-item-->
                 @endrole
+                {{-- ADMIN SECTION --}}
                 @role('Admin')
                     <li class="nav-item">
-                        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                         <a class="nav-link {{ request()->is('dashboard/student-manage-admin') ? 'active' : '' }} "
                             href="{{ route('studentmanageadmin') }}">
                             <span class="nav-icon">
@@ -74,10 +132,8 @@
                             </span>
                             <span class="nav-link-text">Student Management <sup>Admin</sup></span>
                         </a>
-                        <!--//nav-link-->
                     </li>
                     <li class="nav-item">
-                        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                         <a class="nav-link {{ request()->is('dashboard/course') ? 'active' : '' }}"
                             href="{{ route('course.index') }}">
                             <span class="nav-icon">
@@ -89,11 +145,9 @@
                             </span>
                             <span class="nav-link-text">Course Managament</span>
                         </a>
-                        <!--//nav-link-->
                     </li>
 
                     <li class="nav-item">
-                        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                         <a class="nav-link {{ request()->is('dashboard/batch') ? 'active' : '' }}"
                             href="{{ route('batch.index') }}">
                             <span class="nav-icon">
@@ -105,11 +159,9 @@
                             </span>
                             <span class="nav-link-text">Batch Managament</span>
                         </a>
-                        <!--//nav-link-->
                     </li>
 
                     <li class="nav-item">
-                        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                         <a class="nav-link {{ request()->is('dashboard/staff-report') ? 'active' : '' }}"
                             href="{{ route('satffreport') }}">
                             <span class="nav-icon">
@@ -121,11 +173,9 @@
                             </span>
                             <span class="nav-link-text">Staff Report</span>
                         </a>
-                        <!--//nav-link-->
                     </li>
 
                     <li class="nav-item">
-                        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                         <a class="nav-link {{ request()->is('dashboard/users') ? 'active' : '' }}"
                             href="{{ route('users.index') }}">
                             <span class="nav-icon">
@@ -139,11 +189,9 @@
                             </span>
                             <span class="nav-link-text">Staff Managament</span>
                         </a>
-                        <!--//nav-link-->
                     </li>
 
                     <li class="nav-item">
-                        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                         <a class="nav-link {{ request()->is('dashboard/log-activity') ? 'active' : '' }}"
                             href="{{ route('logactivity') }}">
                             <span class="nav-icon">
@@ -155,10 +203,8 @@
                             </span>
                             <span class="nav-link-text">Log Activity</span>
                         </a>
-                        <!--//nav-link-->
                     </li>
                     <li class="nav-item">
-                        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                         <a class="submenu-toggle nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#submenu-1"
                             aria-expanded="false" aria-controls="submenu-1">
                             <span class="nav-icon">
@@ -178,9 +224,7 @@
                                         d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
                                 </svg>
                             </span>
-                            <!--//submenu-arrow-->
                         </a>
-                        <!--//nav-link-->
                         <div id="submenu-1" class="collapse submenu submenu-1" data-bs-parent="#menu-accordion">
                             <ul class="submenu-list list-unstyled">
                                 <li class="submenu-item"><a
@@ -196,7 +240,6 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                         <a class="nav-link {{ request()->is('dashboard/target') ? 'active' : '' }}"
                             href="{{ route('target.index') }}">
                             <span class="nav-icon">
@@ -210,19 +253,20 @@
                             </span>
                             <span class="nav-link-text">Monthly Target Set</span>
                         </a>
-                        <!--//nav-link-->
                     </li>
 
 
                     <li class="nav-item">
-                        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                         <a class="submenu-toggle nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#page"
                             aria-expanded="false" aria-controls="submenu-1">
                             <span class="nav-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journals" viewBox="0 0 16 16">
-                                    <path d="M5 0h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2 2 2 0 0 1-2 2H3a2 2 0 0 1-2-2h1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1H1a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v9a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1H3a2 2 0 0 1 2-2z"/>
-                                    <path d="M1 6v-.5a.5.5 0 0 1 1 0V6h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V9h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 2.5v.5H.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1H2v-.5a.5.5 0 0 0-1 0z"/>
-                                  </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-journals" viewBox="0 0 16 16">
+                                    <path
+                                        d="M5 0h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2 2 2 0 0 1-2 2H3a2 2 0 0 1-2-2h1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1H1a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v9a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1H3a2 2 0 0 1 2-2z" />
+                                    <path
+                                        d="M1 6v-.5a.5.5 0 0 1 1 0V6h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V9h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 2.5v.5H.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1H2v-.5a.5.5 0 0 0-1 0z" />
+                                </svg>
                             </span>
                             <span class="nav-link-text">Pages</span>
                             <span class="submenu-arrow">
@@ -232,9 +276,7 @@
                                         d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
                                 </svg>
                             </span>
-                            <!--//submenu-arrow-->
                         </a>
-                        <!--//nav-link-->
                         <div id="page" class="collapse submenu submenu-1" data-bs-parent="#menu-accordion">
                             <ul class="submenu-list list-unstyled">
                                 <li class="submenu-item"><a
@@ -246,22 +288,31 @@
                                 <li class="submenu-item"><a
                                         class="submenu-link {{ request()->is('dashboard/blogs-admin*') ? 'active' : '' }}"
                                         href="{{ route('blogs-admin.index') }}">Blogs</a></li>
-                                <li class="submenu-item"><a
-                                        class="submenu-link"
-                                        href="{{route('admin-team.index')}}">Our Team</a></li>
+                                <li class="submenu-item"><a class="submenu-link"
+                                        href="{{ route('admin-team.index') }}">Our Team</a></li>
                             </ul>
                         </div>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->is('dashboard/contact-us*') ? 'active' : '' }}"
+                            href="{{ route('contact-us.index') }}">
+                            <span class="nav-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-signal" viewBox="0 0 16 16">
+                                    <path
+                                        d="m6.08.234.179.727a7.264 7.264 0 0 0-2.01.832l-.383-.643A7.9 7.9 0 0 1 6.079.234zm3.84 0L9.742.96a7.265 7.265 0 0 1 2.01.832l.388-.643A7.957 7.957 0 0 0 9.92.234zm-8.77 3.63a7.944 7.944 0 0 0-.916 2.215l.727.18a7.264 7.264 0 0 1 .832-2.01l-.643-.386zM.75 8a7.3 7.3 0 0 1 .081-1.086L.091 6.8a8 8 0 0 0 0 2.398l.74-.112A7.262 7.262 0 0 1 .75 8zm11.384 6.848-.384-.64a7.23 7.23 0 0 1-2.007.831l.18.728a7.965 7.965 0 0 0 2.211-.919zM15.251 8c0 .364-.028.727-.082 1.086l.74.112a7.966 7.966 0 0 0 0-2.398l-.74.114c.054.36.082.722.082 1.086zm.516 1.918-.728-.18a7.252 7.252 0 0 1-.832 2.012l.643.387a7.933 7.933 0 0 0 .917-2.219zm-6.68 5.25c-.72.11-1.453.11-2.173 0l-.112.742a7.99 7.99 0 0 0 2.396 0l-.112-.741zm4.75-2.868a7.229 7.229 0 0 1-1.537 1.534l.446.605a8.07 8.07 0 0 0 1.695-1.689l-.604-.45zM12.3 2.163c.587.432 1.105.95 1.537 1.537l.604-.45a8.06 8.06 0 0 0-1.69-1.691l-.45.604zM2.163 3.7A7.242 7.242 0 0 1 3.7 2.163l-.45-.604a8.06 8.06 0 0 0-1.691 1.69l.604.45zm12.688.163-.644.387c.377.623.658 1.3.832 2.007l.728-.18a7.931 7.931 0 0 0-.916-2.214zM6.913.831a7.254 7.254 0 0 1 2.172 0l.112-.74a7.985 7.985 0 0 0-2.396 0l.112.74zM2.547 14.64 1 15l.36-1.549-.729-.17-.361 1.548a.75.75 0 0 0 .9.902l1.548-.357-.17-.734zM.786 12.612l.732.168.25-1.073A7.187 7.187 0 0 1 .96 9.74l-.727.18a8 8 0 0 0 .736 1.902l-.184.79zm3.5 1.623-1.073.25.17.731.79-.184c.6.327 1.239.574 1.902.737l.18-.728a7.197 7.197 0 0 1-1.962-.811l-.007.005zM8 1.5a6.502 6.502 0 0 0-6.498 6.502 6.516 6.516 0 0 0 .998 3.455l-.625 2.668L4.54 13.5a6.502 6.502 0 0 0 6.93-11A6.516 6.516 0 0 0 8 1.5" />
+                                </svg>
+                            </span>
+                            <span class="nav-link-text">Message</span>
+                        </a>
+                    </li>
                 @endrole
             </ul>
-            <!--//app-menu-->
         </nav>
-        <!--//app-nav-->
         <div class="app-sidepanel-footer">
             <nav class="app-nav app-nav-footer">
                 <ul class="app-menu footer-menu list-unstyled">
                     <li class="nav-item">
-                        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                         <a class="nav-link" href="{{ route('settings') }}">
                             <span class="nav-icon">
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-gear"
@@ -274,12 +325,9 @@
                             </span>
                             <span class="nav-link-text">Settings</span>
                         </a>
-                        <!--//nav-link-->
                     </li>
                     @role('Admin')
-                        <!--//nav-item-->
                         <li class="nav-item">
-                            <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                             <a class="nav-link" href="{{ route('backup') }}">
                                 <span class="nav-icon">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-download"
@@ -292,22 +340,15 @@
                                 </span>
                                 <span class="nav-link-text">SQL Download</span>
                             </a>
-                            <!--//nav-link-->
                         </li>
                     @endrole
-                    <!--//nav-item-->
                     <li class="nav-item pb-2">
                         {{ Form::open(['url' => URL::Route('logout'), 'method' => 'POST', 'name' => 'logout']) }}
                         <button type="submit" style="width: 100%" class="btn btn-light btn-sm">Logout</button>
                         {{ Form::close() }}
                     </li>
-                    <!--//nav-item-->
                 </ul>
-                <!--//footer-menu-->
             </nav>
         </div>
-        <!--//app-sidepanel-footer-->
-
     </div>
-    <!--//sidepanel-inner-->
 </div>

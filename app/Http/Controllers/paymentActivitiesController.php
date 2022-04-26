@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\paymentModel;
-
+use App\Models\studentModel;
+use Auth;
 class paymentActivitiesController extends Controller
 {
     public function index(){
@@ -35,5 +36,13 @@ class paymentActivitiesController extends Controller
             $query->select('id','name');
         }])->with('student.course')->orderBy('id','DESC')->paginate(50)->withQueryString();
         return view('accounts.paymentActivity.monthwiseSearch',compact('paymentmodels','month','year'));
+    }
+
+
+    public function paymentHistoryByCro(){
+        $history = studentModel::where('reference_id',Auth::id())->select('id','name')->has('payment')->with('payment')->with(['payment.reference'=>function($query){
+            $query->select('id','name');
+        }])->orderBy('id','DESC')->paginate(30);
+        return view('paymentHistory.index',compact('history'));
     }
 }

@@ -8,6 +8,8 @@ use App\Models\batchModel;
 use App\Models\studentFeedback;
 use App\Models\blogs;
 use App\Models\ourteam;
+use App\Models\videoReview;
+use App\Models\contactUs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
@@ -39,7 +41,7 @@ class HomeController extends Controller
             'name'=>'required|max:255',
             'fatherName'=>'required|max:255',
             'motherName'=>'required|max:255',
-            'mobileNumber'=>'required|max:255',
+            'mobileNumber'=>'required|max:11|regex:/(01)[0-9]{9}/',
             'dateBirth'=>'required|max:255',
             'gender'=>'required|max:255|not_in:0',
             'presentAddress'=>'required|max:1000',
@@ -118,9 +120,10 @@ class HomeController extends Controller
         return view('home.student_feed_back.feedback',compact('feedback'));
     }
     public function review(){
+        $videoReview = videoReview::orderBy('id','ASC')->paginate(30);
         SEOMeta::setTitle('Review');
         OpenGraph::setTitle('Revoew');
-        return view('home.review.review');
+        return view('home.review.review',compact('videoReview'));
     }
     public function ourteam(){
         SEOMeta::setTitle('Our Team');
@@ -158,6 +161,33 @@ class HomeController extends Controller
        // Newsletter::subscribe($request->email);
        Newsletter::subscribe($request->email);
 
+    }
+
+    public function contactus(){
+        SEOMeta::setTitle('Contact-us');
+        OpenGraph::setTitle('Contact-us');
+        return view('home.contactUs');
+    }
+
+    public function contactSubmit(Request $request){
+        $request->validate([
+            'name'=>'required|max:255',
+            'mobile'=>'required|max:11|regex:/(01)[0-9]{9}/',
+            'message'=>'required|max:1500',
+        ]);
+        $contact =  new contactUs();
+        $contact->name = $request->name;
+        $contact->mobile = $request->mobile;
+        $contact->message = $request->message;
+        $contact->save();
+        return redirect()->back()->with('success','Your Message Sent Successfully!');
+
+    }
+
+    public function aboutus(){
+        SEOMeta::setTitle('About-us');
+        OpenGraph::setTitle('About-us');
+        return view('home.aboutus');
     }
 
 }

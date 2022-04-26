@@ -139,4 +139,8 @@ class userController extends Controller
         Auth::loginUsingId($id);
         return redirect()->route('dashboard');
     }
+
+    public function banned(){
+        return view('users.banned');
+    }
 }

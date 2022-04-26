@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class videoReview extends Model
+class contactUs extends Model
 {
     use HasFactory;
     protected $fillable =[
-        'title',
-        'thumbnail',
-        'link',
+        'name',
+        'mobile',
+        'message',
     ];
 }

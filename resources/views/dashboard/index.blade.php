@@ -46,10 +46,8 @@
                         <h4 class="stats-type mb-1 text-white">Today Collection</h4>
                         <div class="stats-figure text-white">৳{{ number_format($data['todayCollection'], 2) }}</div>
                     </div>
-                    <!--//app-card-body-->
                     <a class="app-card-link-mask" href="#"></a>
                 </div>
-                <!--//app-card-->
             </div>
             <div class="col-6 col-lg-3">
                 <div class="app-card app-card-stat shadow-sm h-100">
@@ -57,10 +55,8 @@
                         <h4 class="stats-type mb-1">Monthly Collection</h4>
                         <div class="stats-figure">৳{{ number_format($data['monthlyCollection'], 2) }}</div>
                     </div>
-                    <!--//app-card-body-->
                     <a class="app-card-link-mask" href="#"></a>
                 </div>
-                <!--//app-card-->
             </div>
             @isset($data['targetedCollection']->requiredAmount)
             <div class="col-6 col-lg-3">
@@ -70,11 +66,8 @@
                         <div class="stats-figure">৳{{ number_format($data['targetedCollection']->requiredAmount, 2) }}</div>
                         <p>Required : {{round($data['required'],2)}} Tk <br>@if($data['average'] > $data['required'])<span class="text-success">Average : {{round( $data['average'] ,2)}} Tk</span> @else <span class="text-danger">Average: {{round( $data['average'] ,2)}} Tk</span> @endif</p>
                     </div>
-
-                    <!--//app-card-body-->
                     <a class="app-card-link-mask" href="#"></a>
                 </div>
-                <!--//app-card-->
             </div>
             @endisset
             <div class="col-6 col-lg-3">
@@ -83,10 +76,8 @@
                         <h4 class="stats-type mb-1 text-white">Due Payment</h4>
                         <div class="stats-figure text-white">৳{{ number_format($data['amountTotal'] - $data['duePayment'], 2) }}</div>
                     </div>
-                    <!--//app-card-body-->
                     <a class="app-card-link-mask" href="#"></a>
                 </div>
-                <!--//app-card-->
             </div>
             
             <div class="col-6 col-lg-3">
@@ -95,22 +86,17 @@
                         <h4 class="stats-type mb-1">Today Admission</h4>
                         <div class="stats-figure">{{$data['todayAdmission']}}</div>
                     </div>
-                    <!--//app-card-body-->
                     <a class="app-card-link-mask" href="#"></a>
                 </div>
-                <!--//app-card-->
             </div>
-
             <div class="col-6 col-lg-3">
                 <div class="app-card app-card-stat shadow-sm h-100">
                     <div class="app-card-body p-3 p-lg-4">
                         <h4 class="stats-type mb-1">Today Form</h4>
                         <div class="stats-figure">{{$data['todayForm']}}</div>
                     </div>
-                    <!--//app-card-body-->
                     <a class="app-card-link-mask" href="#"></a>
                 </div>
-                <!--//app-card-->
             </div>
 
             <div class="col-6 col-lg-3">
@@ -119,10 +105,8 @@
                         <h4 class="stats-type mb-1">Monthly Admission</h4>
                         <div class="stats-figure">{{$data['monthlyAdmission']}}</div>
                     </div>
-                    <!--//app-card-body-->
                     <a class="app-card-link-mask" href="#"></a>
                 </div>
-                <!--//app-card-->
             </div>
 
             <div class="col-6 col-lg-3">
@@ -131,10 +115,8 @@
                         <h4 class="stats-type mb-1">Monthly Form</h4>
                         <div class="stats-figure">{{$data['monthlyForm']}}</div>
                     </div>
-                    <!--//app-card-body-->
                     <a class="app-card-link-mask" href="#"></a>
                 </div>
-                <!--//app-card-->
             </div>
 
             @if(!$data['reminderAdmin']->isEmpty())
@@ -203,17 +185,13 @@
                         <div class="app-card-header p-3 border-0">
                             <h4 class="app-card-title">This Month</h4>
                         </div>
-                        <!--//app-card-header-->
                         <div class="app-card-body p-4">
                             <div class="chart-container">
                                 <canvas id="chart-pie"></canvas>
                             </div>
                         </div>
-                        <!--//app-card-body-->
                     </div>
-                    <!--//app-card-->
                 </div>
-                <!--//col-->
             </div>
         </div>
     @endrole
@@ -255,10 +233,8 @@
                         <h4 class="stats-type mb-1">Today Admission</h4>
                         <div class="stats-figure">{{ $data['todayAdmission'] }}</div>
                     </div>
-                    <!--//app-card-body-->
                     <a class="app-card-link-mask" href="#"></a>
                 </div>
-                <!--//app-card-->
             </div>
             <div class="col-6 col-lg-3">
                 <div class="app-card app-card-stat shadow-sm h-100">
@@ -266,10 +242,8 @@
                         <h4 class="stats-type mb-1">Today Form</h4>
                         <div class="stats-figure">{{ $data['todayForm'] }}</div>
                     </div>
-                    <!--//app-card-body-->
                     <a class="app-card-link-mask" href="#"></a>
                 </div>
-                <!--//app-card-->
             </div>
             <div class="col-6 col-lg-3">
                 <div class="app-card app-card-stat shadow-sm h-100">
@@ -277,10 +251,17 @@
                         <h4 class="stats-type mb-1">Monthly Admission</h4>
                         <div class="stats-figure">{{ $data['monthlyAdmission'] }}</div>
                     </div>
-                    <!--//app-card-body-->
                     <a class="app-card-link-mask" href="#"></a>
                 </div>
-                <!--//app-card-->
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="app-card app-card-stat shadow-sm h-100">
+                    <div class="app-card-body p-3 p-lg-4">
+                        <h4 class="stats-type mb-1">{{DATE('M')}} Collection</h4>
+                        <div class="stats-figure">৳{{ number_format($data['monthlyCollection'],2) }}</div>
+                    </div>
+                    <a class="app-card-link-mask" href="#"></a>
+                </div>
             </div>
             <div class="col-6 col-lg-3">
                 <div class="app-card app-card-stat shadow-sm h-100">
@@ -288,10 +269,8 @@
                         <h4 class="stats-type mb-1">Total Admission</h4>
                         <div class="stats-figure">{{ $data['totalAdmission'] }}</div>
                     </div>
-                    <!--//app-card-body-->
                     <a class="app-card-link-mask" href="#"></a>
                 </div>
-                <!--//app-card-->
             </div>
             <div class="col-6 col-lg-3">
                 <div class="app-card app-card-stat shadow-sm h-100">
@@ -299,11 +278,10 @@
                         <h4 class="stats-type mb-1">Pending Admission</h4>
                         <div class="stats-figure">{{ $data['pendingAdmission'] }}</div>
                     </div>
-                    <!--//app-card-body-->
                     <a class="app-card-link-mask" href="#"></a>
                 </div>
-                <!--//app-card-->
             </div>
+
         </div>
         <div class="row">
 
@@ -313,17 +291,14 @@
                     <div class="app-card-header p-3 border-0">
                         <h4 class="app-card-title">Student Chart</h4>
                     </div>
-                    <!--//app-card-header-->
                     <div class="app-card-body p-4">
                         <div class="chart-container">
                             <canvas id="chart-bar"></canvas>
                         </div>
                     </div>
-                    <!--//app-card-body-->
                 </div>
-                <!--//app-card-->
             </div>
-            <!--//col-->
         </div>
     @endrole
+
 @endsection
