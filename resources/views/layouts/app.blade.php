@@ -136,7 +136,9 @@
             };
 
 
-            //Bar Chart Demo
+
+
+            //Bar Student For CRO
             var url = "{{ url('dashboard/cro-chart') }}";
             var Months = new Array();
             var Admission = new Array();
@@ -247,6 +249,122 @@
                 });
             }
 
+            // CRO Section End
+
+            // Admin All Student
+
+            var url = "{{ url('dashboard/all-student-chart') }}";
+            var Months = new Array();
+            var Admission = new Array();
+            var Form = new Array();
+
+            function getallstudent() {
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(response) {
+                        response.forEach(function(data) {
+                            Months.push(data.month_name);
+                            Admission.push(data.admissionCount);
+                            Form.push(data.formCount);
+
+                        });
+
+
+                        var barChartConfig = {
+                            type: 'bar',
+
+                            data: {
+                                labels: Months,
+                                datasets: [{
+                                        label: 'Admission',
+                                        backgroundColor: "rgba(117,193,129,0.8)",
+                                        hoverBackgroundColor: "rgba(117,193,129,1)",
+
+
+                                        data: Admission
+                                    },
+                                    {
+                                        label: 'Form',
+                                        backgroundColor: "rgba(91,153,234,0.8)",
+                                        hoverBackgroundColor: "rgba(91,153,234,1)",
+
+
+                                        data: Form
+                                    }
+                                ]
+                            },
+                            options: {
+                                responsive: true,
+                                legend: {
+                                    position: 'bottom',
+                                    align: 'end',
+                                },
+
+                                tooltips: {
+                                    mode: 'index',
+                                    intersect: false,
+                                    titleMarginBottom: 10,
+                                    bodySpacing: 10,
+                                    xPadding: 16,
+                                    yPadding: 16,
+                                    borderColor: window.chartColors.border,
+                                    borderWidth: 1,
+                                    backgroundColor: '#fff',
+                                    bodyFontColor: window.chartColors.text,
+                                    titleFontColor: window.chartColors.text,
+                                    callbacks: {
+                                        label: function(tooltipItem, data) {
+                                            return tooltipItem.value;
+                                        }
+                                    },
+
+
+                                },
+                                scales: {
+                                    xAxes: [{
+                                        display: true,
+                                        gridLines: {
+                                            drawBorder: false,
+                                            color: window.chartColors.border,
+                                        },
+
+                                    }],
+                                    yAxes: [{
+                                        display: true,
+                                        gridLines: {
+                                            drawBorder: false,
+                                            color: window.chartColors.borders,
+                                        },
+                                        ticks: {
+                                            beginAtZero: true,
+                                            userCallback: function(value, index, values) {
+                                                return value;
+                                            }
+                                        },
+
+
+                                    }]
+                                }
+
+                            }
+                        };
+
+
+
+                        var barChart = document.getElementById('chart-all-student').getContext('2d');
+                        window.myBar = new Chart(barChart, barChartConfig);
+
+
+
+
+                    }
+                });
+            }
+
+            // Admin All Student End
+
 
 
 
@@ -326,6 +444,7 @@
                 @role('Admin')
                     var pieChart = document.getElementById('chart-pie').getContext('2d');
                     window.myPie = new Chart(pieChart, pieChartConfig);
+                    getallstudent();
                 @else
                     getdata();
                 @endrole

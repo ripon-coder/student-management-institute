@@ -16,6 +16,7 @@ class overviewController extends Controller
         $data['monthlyCollection'] = paymentModel::whereYear('created_at', Carbon::now()->year)->whereMonth('created_at',  Carbon::now()->month)->sum('amount');
         $data['totalCollection'] = paymentModel::sum('amount');
         $data['monthlyExpense'] = Expense::whereYear('created_at', Carbon::now()->year)->whereMonth('created_at',  Carbon::now()->month)->sum('amount');
+        $data['totalDiscount'] = studentModel::sum('discount_amount');
 
         $total = studentModel::where('payAmount','>=',1)->sum('totalAmount');
         $duease = studentModel::where('payAmount','>=',1)->sum('payAmount');

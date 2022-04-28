@@ -21,6 +21,7 @@ use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\OurteamController;
 use App\Http\Controllers\VideoReviewController;
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\AnnounceController;
 
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
@@ -146,6 +147,7 @@ Route::group(['middleware'=>'auth','prefix' => 'dashboard'],function(){
 
     Route::get('/invoice-create-image', [dashboardController::class, 'invoiceCreateImg']);
     Route::get('/cro-chart', [dashboardController::class, 'crochart']);
+    Route::get('/all-student-chart', [dashboardController::class, 'allstudentchart']);
     Route::get('/log-activity', [dashboardController::class, 'logactivity'])->name('logactivity');
 
 
@@ -194,6 +196,7 @@ Route::group(['middleware'=>'auth','prefix' => 'dashboard'],function(){
     Route::resource('video-review', VideoReviewController::class);
     Route::resource('admin-team', OurteamController::class);
     Route::resource('contact-us', ContactUsController::class);
+    Route::resource('announce', AnnounceController::class)->middleware(['role:Admin']);
 
 
     

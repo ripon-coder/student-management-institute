@@ -6,6 +6,7 @@ use App\Models\studentModel;
 use App\Models\User;
 use App\Models\paymentModel;
 use App\Models\targetedCollectionMonthwise;
+use App\Models\Announce;
 use Illuminate\Http\Request;
 use Spatie\Browsershot\Browsershot;
 use Spatie\Activitylog\Models\Activity;
@@ -35,7 +36,7 @@ class dashboardController extends Controller
         ->orderBy('student_count','DESC')
         ->get();
 
-
+        $data['announce'] = Announce::where('status',1)->get();
 
         // Admin
         if(Auth::user()->hasRole('Admin') == true){
@@ -97,9 +98,26 @@ class dashboardController extends Controller
         )
         ->where('reference_id',Auth::id())
         ->whereMonth('created_at', date('m'))
+        ->whereYear('created_at', date('Y'))
         ->groupBy('month_name')
         ->orderBy('month_name', 'asc')
         ->get();
+        
+        return response($data, 200);
+    }
+
+    public function allstudentchart(){
+        $data = studentModel::select(
+            DB::raw("(COUNT(*)) as formCount"),
+            DB::raw("(SUM(CASE WHEN payAmount > '1' THEN 1 ELSE 0 END)) as admissionCount"),
+            DB::raw("DAY(created_at) as month_name"),
+        )
+        ->whereMonth('created_at', date('m'))
+        ->whereYear('created_at', date('Y'))
+        ->groupBy('month_name')
+        ->orderBy('month_name', 'asc')
+        ->get();
+        
         return response($data, 200);
     }
 
