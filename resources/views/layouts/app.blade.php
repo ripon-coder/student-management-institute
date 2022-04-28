@@ -36,7 +36,78 @@
     <script defer src="{{ asset('assets/js/scripts.js') }}"></script>
     <script defer src="{{ asset('assets/js/app.js') }}"></script>
 
+
+    <script defer src="{{ asset('assets/js/jquery.responsiveTabs.js') }}"></script>
+    <script defer src="{{ asset('assets/js/custom.js') }}"></script>
+    <link rel="stylesheet"  href="{{ asset('assets/css/responsive-tabs.css') }}">
+
 </head>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('input[type="radio"]').click(function(){
+            var inputValue = $(this).attr("value");
+            var targetBox = $("." + inputValue);
+            $(".box").not(targetBox).hide();
+            $(targetBox).show();
+        });
+        var windowHeight = $(window).height();
+        var headerHeight = $("header").height();
+        var footerHeight = $("footer").outerHeight();
+        var pageMinHeight = windowHeight - footerHeight;
+        $(".page-min-height").css({"min-height": pageMinHeight,"padding-top": headerHeight + 40});
+        $(window).on("load resize",function(){
+            var windowHeight = $(window).height();
+            var headerHeight = $("header").height();
+            var footerHeight = $("footer").outerHeight();
+            var pageMinHeight = windowHeight - footerHeight;
+            $(".page-min-height").css({"min-height": pageMinHeight,"padding-top": headerHeight + 40});
+        });
+        $('.startButton').hover(
+           function(){ $(this).addClass('btn-outline-primary') },
+           function(){ $(this).removeClass('btn-primary') }
+           )
+
+        $(window).on('load resize', function(){
+            var headerHeight = $('header').height();
+            $('.banner_content .col-lg-7, .banner_content .col-lg-5').css({'padding-top': headerHeight});
+            $(window).scroll(function(){
+                if($(document).scrollTop() > 100){
+                    $('.header_content').addClass('small_header');
+                }
+                else{
+                    $('.header_content').removeClass('small_header');
+                }
+            });
+        });
+        $('.nav_toggle_btn').click(function(){
+            $('.header_menu').addClass('open');
+            $('body').addClass('menu_open');
+        });
+        $('.close_menu_in_mobile > a').click(function(){
+            $('.header_menu').removeClass('open');
+            $('body').removeClass('menu_open');
+        });
+        $(".back_to_top").click(function(event) {
+            event.preventDefault();
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+        });
+        $(window).scroll(function(){
+            if ($(window).scrollTop() > 100) {
+                $('.back_to_top').fadeIn();
+            } else {
+                $('.back_to_top').fadeOut();
+            }
+        });
+    });
+</script>
+
+
+
+
+
+
+
 <body class="app">
     @include('sweetalert::alert')
     <header class="app-header fixed-top">

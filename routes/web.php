@@ -23,6 +23,10 @@ use App\Http\Controllers\VideoReviewController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\AnnounceController;
 
+
+
+use App\Http\Controllers\QuizController;
+
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
@@ -197,6 +201,19 @@ Route::group(['middleware'=>'auth','prefix' => 'dashboard'],function(){
     Route::resource('admin-team', OurteamController::class);
     Route::resource('contact-us', ContactUsController::class);
     Route::resource('announce', AnnounceController::class)->middleware(['role:Admin']);
+
+
+    // EXAM SYSTEM
+    Route::get('/createQuiz', [QuizController::class,'showQuiz'])->name('showQuiz');
+    Route::post('/createQuiz', [QuizController::class,'createQuiz'])->name('storeQuiz');
+    Route::delete('/deleteQuiz/{quiz}', [QuizController::class,'deleteQuiz'])->name('deleteQuiz');
+    Route::get('/viewQuiz/{quiz}', [QuizController::class,'viewQuiz'])->name('viewquiz');
+
+    Route::post('addQuestion/{quizId}', [QuizController::class,'addQuestion'])->name('addQuestion');
+    Route::post('/deleteQuestion/{quizId}',[QuizController::class,'deleteQuestion']);
+    Route::post('/activateQuiz/{quizId}', [QuizController::class,'activateQuiz']);
+    Route::post('/deactivateQuiz/{quizId}',[QuizController::class,'deactivateQuiz']);
+
 
 
     
