@@ -45,7 +45,7 @@
                                     </div>
                                     <div class="form-group ">
                                         <br />
-                                        <button type="submit" class="btn btn-primary">Create Quiz</button>
+                                        <button type="submit" class="btn btn-primary text-white">Create Quiz</button>
                                     </div>
                                     {{ Form::close() }}
                                 </div>

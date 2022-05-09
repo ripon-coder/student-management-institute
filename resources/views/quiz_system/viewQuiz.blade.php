@@ -54,7 +54,7 @@
                                         @if (!$test->permitted)
                                             {{ Form::open(['url' => 'activateQuiz/' . $test->quizid, 'role' => 'form', 'class' => 'form-horizontal']) }}
                                             <button type="submit" id="activate-test-{{ $test->quizid }}"
-                                                class="btn btn-sm btn-success">Activate Test</button>
+                                                class="btn btn-sm btn-success text-white">Activate Test</button>
                                             {{ Form::close() }}
                                         @else
                                             {{ Form::open(['url' => 'deactivateQuiz/' . $test->quizid, 'role' => 'form', 'class' => 'form-horizontal']) }}
@@ -122,7 +122,7 @@
             </div>
             <div class="add_que_class">
                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddQueModal"><i
-                        class="fa fa-plus" style="color: rgb(0, 0, 0);"></i>
+                        class="fa fa-plus" style="color: rgb(255, 255, 255);"></i>
                 </button>
             </div>
         </div>
@@ -224,7 +224,7 @@
 							<div class="form-group">
 								<br>
 								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-								<button type="submit" class="btn btn-primary float-end">Save</button>
+								<button type="submit" class="btn btn-primary text-white float-end">Save</button>
 							</div>
                         </div>
                     </div>
