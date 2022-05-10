@@ -190,4 +190,10 @@ class HomeController extends Controller
         return view('home.aboutus');
     }
 
+    public function privacypolicy(){
+        SEOMeta::setTitle('Privacy Policy');
+        OpenGraph::setTitle('Privacy Policy');
+        return view('home.privacypolicy');
+    }
+
 }

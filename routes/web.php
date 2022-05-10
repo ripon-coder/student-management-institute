@@ -81,6 +81,7 @@ Route::post('/email-submit', [HomeController::class, 'emailsubmit']);
 Route::get('/contact-us', [HomeController::class, 'contactus'])->name('contactus');
 Route::post('/contact-submit', [HomeController::class, 'contactSubmit'])->name('contactSubmit');
 Route::get('/about-us', [HomeController::class, 'aboutus'])->name('aboutus');
+Route::get('/privacy-policy', [HomeController::class, 'privacypolicy'])->name('privacypolicy');
 
 
 Route::group(['middleware'=>'auth','prefix' => 'dashboard'],function(){
